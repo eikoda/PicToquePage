@@ -8,8 +8,23 @@ Today we will do a role-play.\r\nYOU: Hamburger shop owner.\r\nME: Customer orde
     <title>My Homepage</title>
 </head>
 <body>
-    Hi
-    <h1>Welcome to My Homepage</h1>
-    <script src="script.js"></script>
+<textarea id="textArea" rows="10" cols="30">내용을 입력하세요</textarea>
+<br />
+<button onclick="saveFile()">파일로 저장</button>
+
+<script>
+function saveFile() {
+  const content = document.getElementById('textArea').value;
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'mytext.txt';
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+</script>
 </body>
 </html>
